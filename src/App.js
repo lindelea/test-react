@@ -1,26 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Table from "./Table";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+    state = {
+        data: [
+            {
+                name: "dfgdsfgsdfg",
+                job: "fffff"
+            },
+            {
+                name: "aaaaaa",
+                job: "bbbbb"
+            }
+        ]
+    }
+
+    addItem = () => {
+        this.setState(old => ({
+            data: old.data.concat({
+                name: "gsdfasdfasdfdf",
+                job: "dsgfsdfdsaf"
+            })
+        }))
+    }
+
+    render() {
+        let {data} = this.state
+        return (
+            <div>
+                <Table items={data}></Table>
+                <button onClick={() => this.addItem()}>Add</button>
+            </div>
+        )
+    }
 }
 
-export default App;
+export default App
